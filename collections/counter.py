@@ -11,4 +11,4 @@ for i in buyer:
     if i[0] in pair.keys() and pair[i[0]] != 0:
         money += int(i[1])
         pair[i[0]] -= 1
-print(money)         
+print(money)
