@@ -1,1 +1,5 @@
-ECHO attivo.
+e = input()
+eng = set(input().split())
+f = input()
+fran = set(input().split())
+print(len(eng.difference(fran)))
