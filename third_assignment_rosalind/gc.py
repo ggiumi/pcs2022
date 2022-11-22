@@ -1,5 +1,5 @@
 with open("rosalind_gc.txt") as f:
-    sequence = (f.readlines())
+    sequence = f.readlines()
     max_perc_gc = 0
     for i, line in enumerate(sequence):
         if line.startswith(">"):
@@ -16,4 +16,3 @@ with open("rosalind_gc.txt") as f:
                     max_id = id
                     max_perc_gc = gc_content_percent
 print(f'{max_id}{max_perc_gc}')
-
