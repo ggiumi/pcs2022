@@ -6,7 +6,7 @@ k = int(splitted[1])
 big = 1                    
 small = 1                  
 for months in range(1,n-1):
-      bigger = big + small*k   
+      bigger = big+small*k   
       small = big              
-      big = bigger             
-print(big) 
+      big = bigger           
+print(big)
