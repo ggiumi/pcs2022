@@ -1,21 +1,11 @@
 with open("rosalind_revp.txt") as f:
-    seq = f.read().splitlines()
-for position in range(len(seq)):
-    if seq[position].startswith(('>')):
-        fasta = (seq[position])
-    else:
-        sequence = (seq[position])
-def reverse_translation(seq):
-    translation = str.maketrans('ATCG','TAGC')
-    complement_strand = seq.translate(translation)[::-1]
-    return complement_strand
-result=[]
-for i in range(len(sequence)):
-    for j in range(4,13):
-        if i + j > len(sequence):
-            continue
-        string1 = sequence[i:i+j]
-        string2 = reverse_translation(string1)
-        if string1 == string2:
-            result.append((i+1, j))
-print("\n".join([' '.join(map(str, r)) for r in result]))
+    seq = f.read().split("\n")
+dna_seq = ''.join(seq[1:-1])
+length = [4, 6, 8, 10, 12]
+for i in range(len(dna_seq)):
+    for j in length:
+        if i + j <= len(dna_seq):
+            sub = dna_seq[i:i+j]
+            reverse = sub[::-1].replace("A", "%temp%").replace("T", "A").replace("%temp%", "T").replace("C", "%temp%").replace("G", "C").replace("%temp%", "G")
+            if sub == reverse:
+                print(str(i+1) + " " +str(len(reverse)))
