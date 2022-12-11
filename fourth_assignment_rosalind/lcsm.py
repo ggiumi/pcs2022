@@ -5,16 +5,16 @@ for position in range(len(seq)):
         fasta = (seq[position])
     else:
         sequence = (seq[position])
-first_seq = min(sequence, key=len)
-k = len(first_seq)
-for i in range(k, 1, -1):
-    for j in range(k-i+1):
-        motif = first_seq[j:j+i]
-        found = True           
-        for seq in sequence:
-            s = seq.find(motif)
-            if s == -1:
-                found = False
-                break
-            if found == True:
-                print(motif)
+list = []
+common_sub = ''
+find = ''
+for i in range(len(sequence[0])):
+    find += list[0][i]
+    check = True
+    for j in sequence:
+        if find not in j:
+            find = ''
+            check = False
+            common_sub = find
+lcsm = max(list, key = len)
+print(lcsm)
