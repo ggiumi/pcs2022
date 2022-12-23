@@ -1,7 +1,7 @@
 from Bio import SeqIO
 fasta = []
 seq = []
-with open ('rosalind_grph.txt','r') as fa:
+with open ("rosalind_grph.txt") as fa:
     for seq_record in SeqIO.parse(fa,'fasta'):
         fasta.append(str(seq_record.name))
         seq.append(str(seq_record.seq))

@@ -1,5 +1,5 @@
 from Bio.Seq import Seq
-with open('rosalind_splc.txt') as f:
+with open("rosalind_splc.txt") as f:
     introns = []
     f = f.read().split('>')[1:]
     seq = str(f[0]).split('\n', 1)[1].replace('\n', '')
