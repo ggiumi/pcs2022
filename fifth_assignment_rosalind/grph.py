@@ -1,13 +1,11 @@
 from Bio import SeqIO
 fasta = []
-sequence = []
+seq = []
 with open ('rosalind_grph.txt','r') as fa:
     for seq_record in SeqIO.parse(fa,'fasta'):
         fasta.append(str(seq_record.name))
-        sequence.append(str(seq_record.seq))
-'''print(sequence) 
-print(fasta)'''
-for i in range(len(sequence)):
-    for j in range(len(sequence)):
-        if i != j and sequence[i][-3:] == sequence[j][:3]:
+        seq.append(str(seq_record.seq))
+for i in range(len(seq)):
+    for j in range(len(seq)):
+        if i != j and seq[i][-3:] == seq[j][:3]:
             print(fasta[i], fasta[j])
