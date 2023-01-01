@@ -1,4 +1,3 @@
-
 with open("rosalind_pper.txt") as f:
     seq = f.readlines()
     splitted = seq[0].split(' ')
