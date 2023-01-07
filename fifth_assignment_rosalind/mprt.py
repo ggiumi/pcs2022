@@ -1,16 +1,26 @@
 import re
-import requests
-def get_sequence(id: str):
-    response = requests.get(f"http://www.uniprot.org/uniprot/{id}.fasta").text
-    return "".join(line.strip() for line in response.splitlines()[1:])
-with open("rosalind_mprt.txt") as inFile:
-    list = [line.strip() for line in inFile.readlines()]
-with open("rosalind_mprt_ans.txt", "w") as outFile: 
-    N_gly = {}
-    for id in list:
-        prot_sequence = get_sequence(id) 
-        N_gly[id] = [m.start() + 1 for m in re.finditer(r"(?=[N][^P][ST][^P])", prot_sequence)]      
-    for id, idx in N_gly.items():
-        if len(idx) > 0:
-            print(id, file=outFile)
-            print(" ".join(map(str, idx)), file=outFile)
+from urllib.request import urlopen
+import sys
+from Bio import SeqIO
+from Bio.SeqRecord import SeqRecord
+with open("rosalind_mprt.txt") as h:
+    ID = []
+    for i in h.readlines():
+        ID.append(i.strip())
+with open("rosalind_mprt_ans.txt", 'x') as f:
+    sys.stdout = f
+    for j in ID:
+        id = ""
+        for m in j:
+            if m == "_":
+                break
+            id += m
+        seq = ''.join(fasta[1:])
+        match = re.finditer("(?=(N[^P][ST][^P]))", seq)
+        ans = urlopen(f"http://www.uniprot.org/uniprot/{id}.fasta")
+        fasta = ans.read().decode("utf-8", "ignore").splitlines()
+        list = [m.start()+1 for m in match]
+        if list != []:
+            print(j)
+            print(*list)
+print(ID)
