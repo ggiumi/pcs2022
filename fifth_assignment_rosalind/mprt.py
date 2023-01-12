@@ -15,10 +15,10 @@ with open("rosalind_mprt_ans.txt", 'x') as f:
             if m == "_":
                 break
             id += m
-        seq = ''.join(fasta[1:])
-        match = re.finditer("(?=(N[^P][ST][^P]))", seq)
         ans = urlopen(f"http://www.uniprot.org/uniprot/{id}.fasta")
         fasta = ans.read().decode("utf-8", "ignore").splitlines()
+        seq = ''.join(fasta[1:])
+        match = re.finditer("(?=(N[^P][ST][^P]))", seq)
         list = [m.start()+1 for m in match]
         if list != []:
             print(j)
